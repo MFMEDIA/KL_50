@@ -45,11 +45,22 @@ async def start(bot, update):
             await update.reply_text(f"<b>Error:</b>\n<code>{e}</code>", True, parse_mode="html")
             LOGGER(__name__).error(e)
         return
-
+    reply_markup = InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton(text = '🧑‍💻Developer', url = 'https://t.me/kuruthamkettavan'),
+                InlineKeyboardButton(text = '👥Group', url = 'https://t.me/CM_Villa')
+            ],
+            [
+                InlineKeyboardButton(text = '🔗OUR CHANNELS LINKS🔗', url = 'https://t.me/CMV_Links')
+            ]
+        ]
+    )
     await bot.copy_message(
         chat_id=update.chat.id,
         from_chat_id=-1001282394703,
         message_id=3741,
+        reply_markup = reply_markup,
         reply_to_message_id=update.message_id
     )
 
